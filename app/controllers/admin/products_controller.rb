@@ -6,11 +6,11 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    # binding.pry
   end
 
   def create
     @product = Product.new(product_params)
-
     if @product.save
       redirect_to [:admin, :products], notice: 'Product created!'
     else
