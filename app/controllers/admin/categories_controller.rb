@@ -1,4 +1,5 @@
 class Admin::CategoriesController < ApplicationController
+  http_basic_authenticate_with name: ENV['ADMIN_USER'], password: ENV['ADMIN_PASS']
 
   def index
     @categories = Category.order(id: :desc).all
@@ -18,16 +19,18 @@ class Admin::CategoriesController < ApplicationController
     end
   end
 
-  def category_params
-    params.require(:category).permit(
-      :name
-    )
-  end
-
   def destroy
     @category = Category.find params[:id]
     @category.destroy
     redirect_to [:admin, :categories], notice: 'Category deleted!'
+  end
+
+  private
+
+  def category_params
+    params.require(:category).permit(
+      :name
+    )
   end
 
 end

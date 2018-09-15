@@ -4,7 +4,7 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hey <%= @user.first_name %>, your order has been received! </h1>
+    <h1>Hey <%= @user.name %>, your order has been received! </h1>
     <p>
     These items will be arriving shortly:
     <% @order.line_items.each do |item| %>
