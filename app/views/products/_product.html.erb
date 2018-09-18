@@ -25,4 +25,11 @@ Sold Out!
   <aside class="price">
     <%= humanized_money_with_symbol product.price %>
   </aside>
+
+  <% product_reviews = product.reviews %>
+  <% product_ratings = [] %>
+  <% product_reviews.each do |review| %>
+  <% product_ratings.push(review.rating) %>
+  <% end %>
+  
 </article>

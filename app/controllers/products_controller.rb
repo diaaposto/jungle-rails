@@ -13,6 +13,11 @@ class ProductsController < ApplicationController
     #you can request the page again and type next and then @product and then @product.name = "New Name"
    # type continue and reload your browser, pretty cool
     @product = Product.find params[:id]
+    if current_user 
+      @review = Review.find_by(product_id: params[:id], user_id: current_user[:id])
+    else
+      @review = Review.new
+    end
   end
 
 end

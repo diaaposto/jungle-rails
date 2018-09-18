@@ -132,5 +132,27 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+## USERS
+
+User.create!({
+  name: Faker::Name.name,
+  # last_name: Faker::Name.last_name,
+  email: Faker::Internet.email,
+  password: Faker::Internet.password(8) 
+
+})
+
+## REVIEWS
+
+all_products = Product.all
+all_products.each do |p|
+  4.times do
+    p.reviews.create!({
+      user_id: 1,
+      description: Faker::Lorem.sentence,
+      rating: Faker::Number.between(1, 5)
+    })
+  end
+end
 
 puts "DONE!"
